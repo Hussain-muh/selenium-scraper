@@ -1,11 +1,11 @@
-import time
-
+import os
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
 class LoginPage():
-    def __init__(self, driver):
-        self.driver = driver
+
 
     _enrol_link = "/html/body/div[1]/div[3]/div[1]/div[3]/div/div/div/div[1]/div/div[1]/div[2]/div/div[1]/div/div[5]/div/button"
     _fullname_input = "id_fullname"
@@ -50,10 +50,21 @@ class LoginPage():
     def clickEnrolNow(self):
         self.getEnrolNow().click()
 
-    def _login(self, username, email):
+    def _login(self):
+        chrome_options = Options()
+        chrome_options.add_experimental_option("detach", True)
+        baseURL = "https://www.udemy.com/course/bases-de-datos-jairo-galeas/?couponCode=DEJA5ESTRELLAS"
+        driverLocation = "/home/hussain/PycharmProjects/selenium/chromedriver"
+        os.environ['webdriver.chrome.driver'] = driverLocation
+        self.driver = webdriver.Chrome(driverLocation, options=chrome_options)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(10)
+        self.driver.get(baseURL)
         self.clickEnrolLink()
-        self.enterFullname()
-        self.enterEmail()
-        self.enterPassword()
+        self.enterFullname("huss")
+        self.enterEmail("jassw@gmail.com")
+        self.enterPassword("lkhfvbcyugfbff")
         self.clickSubmit()
         self.clickEnrolNow()
+
+LoginPage()._login()

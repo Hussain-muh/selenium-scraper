@@ -4,9 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from pages.home.login_page import LoginPage
-import unittest
 
-class LoginTest(unittest.TestCase):
+class LoginTest():
 
     def tesr_validLogin(self):
         chrome_options = Options()
