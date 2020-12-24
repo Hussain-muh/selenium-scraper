@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 
-class LoginPage():
+class LoginPage:
     _select_python_courses = "/html/body/div[2]/div[2]/header/div[2]/div/div/ul/li[5]/div/div/ul/li[2]/a"
     _order = "orderby"
     _select_cours = "//main[@id='content']/div[4]/ul/li/div/div[2]/a/h3"
